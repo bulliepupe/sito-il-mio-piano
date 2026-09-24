@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="it"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Il mio Piano — l'app del piano nutrizionale per i tuoi pazienti</title>
+<meta name="description" content="L'app che aiuta i pazienti a seguire il piano nutrizionale: menu del giorno, promemoria prima dei pasti, lista della spesa e sostituzioni decise dal professionista. Per dietisti e nutrizionisti.">
+<meta property="og:title" content="Il mio Piano — il piano che scrivi, seguito ogni giorno">
+<meta property="og:description" content="Menu del giorno, promemoria, lista della spesa e sostituzioni per i pazienti del tuo studio.">
+<meta name="theme-color" content="#2F5142">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232F5142'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Georgia' font-size='18' fill='%23F3F7F0'%3EP%3C/text%3E%3C/svg%3E">
+<style>html,body{margin:0}</style>
+</head><body>
+<!-- ============ INIZIO CONTENUTO (per WordPress: copia da qui fino a FINE CONTENUTO in un blocco "HTML personalizzato") ============ -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+#imp{--bg:#EEF2E8;--paper:#F7F9F3;--border:#DCE3D4;--ink:#1E2B21;--soft:#5B6B5D;--faint:#8B9A8C;--accent:#2F5142;--accent-ink:#F3F7F0;--gold:#B9852E;--gold-l:#E0AC50;
+  --display:"Fraunces",Georgia,serif;--body:"Inter",-apple-system,"Segoe UI",sans-serif;
+  font-family:var(--body);color:var(--ink);background:var(--paper);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+#imp [hidden]{display:none!important}
+#imp *,#imp *::before,#imp *::after{box-sizing:border-box;margin:0;padding:0}
+#imp img,#imp svg{max-width:100%}
+#imp a{color:inherit}
+#imp :focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+#imp h1,#imp h2,#imp h3{font-family:var(--display);font-weight:500;color:var(--accent);line-height:1.12;letter-spacing:-.01em}
+#imp h1{font-size:clamp(2.2rem,5.2vw,3.7rem);font-variation-settings:"opsz" 144,"SOFT" 50}
+#imp h2{font-size:clamp(1.7rem,3.4vw,2.5rem);font-variation-settings:"opsz" 96,"SOFT" 50;margin-bottom:.6rem}
+#imp h3{font-size:1.15rem;font-weight:600}
+#imp .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+#imp section{padding:88px 0}
+#imp section,#imp #acquista{scroll-margin-top:76px}
+#imp .intro{color:var(--soft);max-width:62ch;font-size:1.05rem;margin-bottom:40px}
+#imp .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 1rem var(--body);padding:14px 24px;border-radius:12px;border:0;cursor:pointer;text-decoration:none;background:var(--accent);color:var(--accent-ink);transition:background .15s}
+#imp .btn:hover{background:#23402f}
+#imp .btn.ghost{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 1.5px var(--accent)}
+#imp .btn.ghost:hover{background:rgba(47,81,66,.07)}
+#imp .btn.gold{background:var(--gold);color:#fff}
+
+/* nav */
+#imp .nav{position:sticky;top:0;z-index:20;background:rgba(247,249,243,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding-top:env(safe-area-inset-top,0px)}
+#imp .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+#imp .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+#imp .mark{width:36px;height:36px;border-radius:10px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:500 20px var(--display)}
+#imp .brand b{font:500 1.25rem var(--display);color:var(--accent)}
+#imp .nav nav{display:flex;gap:26px;align-items:center;font-size:.95rem}
+#imp .nav nav a{text-decoration:none;color:var(--soft)}
+#imp .nav nav a:hover{color:var(--accent)}
+#imp .nav .btn{padding:10px 18px;font-size:.93rem;color:var(--accent-ink)}
+@media(max-width:820px){#imp .nav nav a:not(.btn){display:none}}
+
+/* hero */
+#imp .hero{padding:64px 0 0;overflow:hidden}
+#imp .hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:start}
+#imp .hero p.sub{font-size:1.18rem;color:var(--soft);margin:22px 0 30px;max-width:54ch}
+#imp .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+#imp .hero .for{margin-top:26px;font-size:.92rem;color:var(--faint)}
+#imp .legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:30px;font-size:.88rem;color:var(--soft)}
+#imp .legend i{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:1px}
+#imp .strip{margin-top:28px;position:relative;z-index:0}
+#imp .hero .wrap{position:relative;z-index:1}
+#imp .strip svg{width:100%;height:clamp(150px,22vw,260px);display:block}
+@media(max-width:820px){#imp .hero .wrap{grid-template-columns:1fr}#imp .phone{margin:0 auto}#imp .strip{margin-top:24px}}
+
+/* phone */
+#imp .phone{width:270px;background:#16211A;border-radius:40px;padding:10px;box-shadow:0 30px 60px rgba(30,43,33,.2);position:relative;z-index:2}
+#imp .scr{background:var(--bg);border-radius:31px;overflow:hidden;height:500px;position:relative;font-size:12px;line-height:1.35}
+#imp .notch{width:80px;height:18px;background:#16211A;border-radius:0 0 12px 12px;margin:0 auto}
+#imp .pt{padding:8px 16px 8px}#imp .pt small{display:block;color:var(--faint);font-size:10px}#imp .pt strong{font:500 20px var(--display)}
+#imp .ph{margin:0 12px;background:var(--accent);color:var(--accent-ink);border-radius:14px;padding:11px 13px}
+#imp .ph small{font-size:10px;opacity:.8;display:block}#imp .ph b{font:500 16px var(--display);display:block;margin:2px 0 7px}
+#imp .bar{height:6px;background:rgba(255,255,255,.22);border-radius:4px;overflow:hidden}#imp .bar i{display:block;height:100%;width:40%;background:var(--gold-l)}
+#imp .m{display:flex;gap:8px;margin:8px 12px 0;background:#fff;border:1px solid var(--border);border-radius:11px;padding:8px 10px}
+#imp .m .dot{width:9px;height:9px;border-radius:50%;margin-top:3px;flex:none}
+#imp .mb{flex:1;min-width:0}#imp .mh{display:flex;justify-content:space-between;font-weight:600;font-size:11.5px}#imp .mh span{color:var(--faint);font-weight:500}
+#imp .mt{color:var(--soft);font-size:10.5px}#imp .m.done .mt{text-decoration:line-through;opacity:.6}
+#imp .sost{display:inline-block;margin-top:4px;font-size:9.5px;color:var(--accent);border:1px solid var(--border);border-radius:10px;padding:0 7px}
+#imp .ck{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--border);flex:none;position:relative}
+#imp .ck.ok{background:var(--accent);border-color:var(--accent)}
+#imp .ck.ok::after{content:"";position:absolute;left:4px;top:3.5px;width:5px;height:3px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(-45deg)}
+#imp .tb{position:absolute;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:9px 0 13px;font-size:9.5px;color:var(--faint)}#imp .tb b{color:var(--accent)}
+#imp .notif{position:absolute;left:9px;right:9px;top:24px;z-index:3;background:rgba(255,255,255,.97);border-radius:13px;padding:8px 10px;display:flex;gap:8px;box-shadow:0 8px 20px rgba(0,0,0,.16);animation:imp-drop .7s cubic-bezier(.2,.8,.2,1) .6s both}
+#imp .notif .ni{width:24px;height:24px;border-radius:6px;background:var(--accent);color:#fff;display:grid;place-items:center;font:500 12px var(--display);flex:none}
+#imp .notif b{display:block;font-size:11px}#imp .notif span{font-size:10px;color:var(--soft)}
+@keyframes imp-drop{from{transform:translateY(-70px);opacity:0}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){#imp .notif{animation:none}}
+
+/* pillars */
+#imp .problem{background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+#imp .problem .wrap{display:grid;grid-template-columns:1.2fr 2fr;gap:48px}
+#imp .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+#imp .pill{border:1px solid var(--border);border-radius:16px;padding:22px;background:var(--paper)}
+#imp .pill .ic{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;margin-bottom:12px}
+#imp .pill p{color:var(--soft);font-size:.95rem;margin-top:4px}
+@media(max-width:900px){#imp .problem .wrap{grid-template-columns:1fr}#imp .pillars{grid-template-columns:1fr}}
+
+/* flow */
+#imp .flow{display:grid;grid-template-columns:1fr 56px 1fr 56px 1fr;align-items:stretch}
+#imp .fc{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px;position:relative}
+#imp .fc .num{position:absolute;top:-14px;left:22px;width:28px;height:28px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;font:500 14px var(--display)}
+#imp .fc .big{width:52px;height:52px;border-radius:14px;background:var(--bg);color:var(--accent);display:grid;place-items:center;margin-bottom:14px}
+#imp .fc p{color:var(--soft);font-size:.95rem;margin:6px 0 10px}
+#imp .fc ul{padding-left:18px;font-size:.93rem}
+#imp .arr{display:grid;place-items:center}
+@media(max-width:900px){#imp .flow{grid-template-columns:1fr;gap:26px}#imp .arr{transform:rotate(90deg);height:20px}}
+
+/* roles */
+#imp .roles{display:grid;grid-template-columns:1fr 1fr;border-radius:20px;overflow:hidden;border:1px solid var(--border)}
+#imp .role{padding:34px}
+#imp .role.pro{background:var(--accent);color:var(--accent-ink)}#imp .role.pro h3{color:#fff}
+#imp .role.paz{background:#fff}
+#imp .rh{display:flex;gap:12px;align-items:center;margin-bottom:16px}
+#imp .rh .ic{width:46px;height:46px;border-radius:50%;display:grid;place-items:center}
+#imp .role.pro .ic{background:rgba(255,255,255,.14)}#imp .role.paz .ic{background:var(--bg);color:var(--accent)}
+#imp .rh small{display:block;font:400 .85rem var(--body);opacity:.75}
+#imp .role ul{list-style:none}
+#imp .role li{padding:9px 0 9px 20px;position:relative;border-bottom:1px solid rgba(127,140,128,.22);font-size:.97rem}
+#imp .role li:last-child{border-bottom:0}
+#imp .role li::before{content:"";position:absolute;left:0;top:17px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+#imp .role.paz li::before{background:#7E9B6E}
+@media(max-width:820px){#imp .roles{grid-template-columns:1fr}}
+
+/* features */
+#imp .feats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+#imp .ft{background:#fff;border:1px solid var(--border);border-radius:14px;padding:20px}
+#imp .ft .ic{color:var(--accent);margin-bottom:10px}
+#imp .ft h3{font-size:1.02rem;color:var(--ink)}#imp .ft p{font-size:.9rem;color:var(--soft);margin-top:4px}
+@media(max-width:980px){#imp .feats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){#imp .feats{grid-template-columns:1fr}}
+
+/* day */
+#imp .daybox{overflow-x:auto;padding-bottom:6px}
+#imp .day{position:relative;min-width:860px}
+#imp .day .line{position:absolute;left:0;right:0;top:56px;height:4px;border-radius:3px;background:var(--border)}
+#imp .day .row{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;position:relative}
+#imp .day .t{font:500 1.35rem var(--display);height:40px}
+#imp .day .d{width:22px;height:22px;border-radius:50%;border:5px solid var(--paper);margin:5px 0 12px}
+#imp .day b{display:block;font-size:.95rem}#imp .day span{font-size:.88rem;color:var(--soft)}
+
+/* why */
+#imp .why{display:grid;grid-template-columns:1fr 1fr;gap:34px 56px}
+#imp .wy{display:grid;grid-template-columns:44px 1fr;gap:12px}
+#imp .wy .n{font:500 2.2rem var(--display);color:var(--gold);line-height:1}
+#imp .wy h3{color:var(--ink);margin-bottom:4px}#imp .wy p{color:var(--soft);font-size:.97rem}
+@media(max-width:820px){#imp .why{grid-template-columns:1fr}}
+
+/* pricing */
+#imp .pricing{background:#fff;border-top:1px solid var(--border)}
+#imp .plans{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:56px}
+#imp .plan{border:1.5px solid var(--border);border-radius:18px;padding:26px 22px;display:flex;flex-direction:column;background:var(--paper);cursor:pointer;transition:border-color .15s}
+#imp .plan:hover{border-color:#b8c7ad}
+#imp .plan.on{border-color:var(--accent);box-shadow:0 0 0 3px rgba(47,81,66,.12)}
+#imp .plan.hl{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+#imp .plan.hl h3{color:#fff}#imp .plan.hl.on{box-shadow:0 0 0 4px rgba(185,133,46,.5)}
+#imp .plan .pz{font-size:.9rem;opacity:.8;margin-top:2px}
+#imp .plan .eur{font:500 2.5rem var(--display);margin:18px 0 4px;line-height:1}
+#imp .plan .eur small{font:400 .9rem var(--body);opacity:.8}
+#imp .plan ul{list-style:none;font-size:.9rem;margin:14px 0 20px;flex:1}
+#imp .plan li{padding:4px 0 4px 18px;position:relative}
+#imp .plan li::before{content:"";position:absolute;left:0;top:12px;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+#imp .plan .btn{width:100%}
+#imp .plan.hl .btn{background:var(--gold);color:#fff}
+#imp .tag{align-self:flex-start;font-size:.75rem;font-weight:600;background:var(--gold);color:#fff;border-radius:20px;padding:2px 10px;margin-bottom:10px}
+@media(max-width:980px){#imp .plans{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){#imp .plans{grid-template-columns:1fr}}
+
+#imp .buy{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;background:var(--paper);border:1px solid var(--border);border-radius:22px;padding:40px}
+#imp .buy .steps{list-style:none;counter-reset:s;margin-top:18px}
+#imp .buy .steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:10px;margin-bottom:14px;color:var(--soft);font-size:.96rem}
+#imp .buy .steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:500 14px var(--display)}
+#imp form{display:grid;gap:16px}
+#imp label.f{display:grid;gap:6px;font-size:.9rem;font-weight:600}
+#imp label.f span.o{font-weight:400;color:var(--faint)}
+#imp input[type=text],#imp input[type=email],#imp input[type=tel],#imp select,#imp textarea{font:400 1rem var(--body);color:var(--ink);background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;width:100%}
+#imp input:focus,#imp select:focus,#imp textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px rgba(47,81,66,.14)}
+#imp .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#imp .chk{display:flex;gap:10px;font-size:.88rem;color:var(--soft);align-items:flex-start}
+#imp .chk input{margin-top:4px;width:18px;height:18px;accent-color:var(--accent);flex:none}
+#imp .err{color:#9B3048;font-size:.9rem;min-height:1.3em}
+#imp .sum{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px;font-size:.95rem}
+#imp .sum b{font:500 1.35rem var(--display);color:var(--accent)}
+#imp .secure{font-size:.82rem;color:var(--faint);display:flex;gap:6px;align-items:center}
+@media(max-width:900px){#imp .buy{grid-template-columns:1fr;padding:26px}#imp .row2{grid-template-columns:1fr}}
+
+/* faq */
+#imp details{border-bottom:1px solid var(--border);padding:18px 0}
+#imp summary{cursor:pointer;font-weight:600;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+#imp summary::-webkit-details-marker{display:none}
+#imp summary::after{content:"+";font:400 1.5rem/1 var(--display);color:var(--gold);transition:transform .2s}
+#imp details[open] summary::after{transform:rotate(45deg)}
+#imp details p{color:var(--soft);margin-top:10px;max-width:75ch}
+#imp .faqwrap{max-width:820px}
+
+/* cta + footer */
+#imp .cta{background:var(--accent);color:var(--accent-ink);text-align:left}
+#imp .cta .wrap{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+#imp .cta h2{color:#fff;margin:0}
+#imp .cta p{opacity:.85;margin-top:8px}
+#imp footer{background:#1E2B21;color:#A9B7A5;font-size:.88rem;padding:40px 0 calc(40px + env(safe-area-inset-bottom,0px))}
+#imp footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+#imp footer a{color:#EAEFE4}
+#imp footer nav{display:flex;gap:20px;flex-wrap:wrap}
+#imp .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 18px;border-radius:10px;font-size:.93rem;z-index:50;max-width:90vw}
+</style>
+<div id="imp">
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top"><span class="mark">P</span><b>Il mio Piano</b></a>
+  <nav><a href="#come-funziona">Come funziona</a><a href="#funzioni">Funzioni</a><a href="#prezzi">Prezzi</a><a href="#faq">Domande</a><a class="btn" href="#acquista">Attiva ora</a></nav>
+</div></header>
+
+<section class="hero" id="top"><div class="wrap">
+  <div>
+    <h1>Il piano che scrivi, seguito ogni giorno a tavola.</h1>
+    <p class="sub">Il mio Piano trasforma il tuo piano nutrizionale in un'app per il paziente: il menu di oggi, i promemoria prima di ogni pasto, la lista della spesa e le sostituzioni che hai deciso tu. Tu lo aggiorni dallo studio, lui lo ritrova subito sul telefono.</p>
+    <div class="ctas"><a class="btn" href="#acquista" data-go="prova">Prova gratis per 30 giorni</a><a class="btn ghost" href="#come-funziona">Guarda come funziona</a></div>
+    <p class="for">Per dietisti, biologi nutrizionisti e medici nutrizionisti. Android, iPhone e computer.</p>
+    <div class="legend"><span><i style="background:#C9962A"></i>Colazione</span><span><i style="background:#7E9B6E"></i>Spuntino</span><span><i style="background:#235C52"></i>Pranzo</span><span><i style="background:#A15C72"></i>Merenda</span><span><i style="background:#4B3B63"></i>Cena</span></div>
+  </div>
+  <div class="phone" aria-hidden="true"><div class="scr">
+      <div class="notif"><span class="ni">P</span><div><b>Tra 15 minuti: Pranzo</b><span>Risotto alla robiola + Zucchine 150g</span></div></div>
+      <div class="notch"></div>
+      <div class="pt"><small>Giovedì 24 settembre</small><strong>Il mio Piano</strong></div>
+      <div class="ph"><small>Settimana 2 del piano</small><b>Oggi: 2 pasti su 5</b><div class="bar"><i></i></div></div>
+      <div class="m done"><span class="dot" style="background:var(--m-colazione)"></span>
+        <div class="mb"><div class="mh">Colazione<span>08:00</span></div><div class="mt">Latte p.s. 200ml + Avena 35g</div></div>
+        <span class="ck ok"></span></div><div class="m done"><span class="dot" style="background:var(--m-spuntino1)"></span>
+        <div class="mb"><div class="mh">Spuntino<span>10:30</span></div><div class="mt">Mela o pera 250g</div></div>
+        <span class="ck ok"></span></div><div class="m"><span class="dot" style="background:var(--m-pranzo)"></span>
+        <div class="mb"><div class="mh">Pranzo<span>13:00</span></div><div class="mt">Risotto alla robiola + Zucchine 150g</div></div>
+        <span class="ck"></span></div><div class="m"><span class="dot" style="background:var(--m-spuntino2)"></span>
+        <div class="mb"><div class="mh">Merenda<span>16:30</span></div><div class="mt">Crackers integrali 30g</div></div>
+        <span class="ck"></span></div><div class="m"><span class="dot" style="background:var(--m-cena)"></span>
+        <div class="mb"><div class="mh">Cena<span>20:00</span></div><div class="mt">Pollo alla griglia 220g + Insalata</div><span class="sost">Sostituisci</span></div>
+        <span class="ck"></span></div>
+      <div class="tb"><b>Oggi</b><span>Settimana</span><span>Spesa</span><span>Impostazioni</span></div>
+    </div></div>
+</div>
+<div class="strip"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Piatto con verdure, cereali, uovo e pomodorini, limone ed erbe aromatiche" xmlns:c2pa="http://c2pa.org/manifest">
+<defs>
+<radialGradient id="piatto" cx="45%" cy="40%" r="65%"><stop offset="0" stop-color="#FBF9F3"/><stop offset="1" stop-color="#EDE8DC"/></radialGradient>
+<radialGradient id="pom" cx="35%" cy="35%" r="70%"><stop offset="0" stop-color="#E06A4E"/><stop offset="1" stop-color="#B23E2C"/></radialGradient>
+<radialGradient id="mirt" cx="35%" cy="35%" r="70%"><stop offset="0" stop-color="#6F6A9C"/><stop offset="1" stop-color="#3B3560"/></radialGradient>
+<filter id="ombra" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="7" flood-color="#2F5142" flood-opacity="0.18"/></filter>
+</defs>
+<rect width="800" height="300" fill="#DCE5D1"/>
+<line x1="0" y1="0" x2="800" y2="0" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="6" x2="800" y2="6" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="12" x2="800" y2="12" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="18" x2="800" y2="18" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="24" x2="800" y2="24" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="30" x2="800" y2="30" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="36" x2="800" y2="36" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="42" x2="800" y2="42" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="48" x2="800" y2="48" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="54" x2="800" y2="54" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="60" x2="800" y2="60" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="66" x2="800" y2="66" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="72" x2="800" y2="72" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="78" x2="800" y2="78" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="84" x2="800" y2="84" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="90" x2="800" y2="90" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="96" x2="800" y2="96" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="102" x2="800" y2="102" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="108" x2="800" y2="108" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="114" x2="800" y2="114" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="120" x2="800" y2="120" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="126" x2="800" y2="126" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="132" x2="800" y2="132" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="138" x2="800" y2="138" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="144" x2="800" y2="144" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="150" x2="800" y2="150" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="156" x2="800" y2="156" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="162" x2="800" y2="162" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="168" x2="800" y2="168" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="174" x2="800" y2="174" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="180" x2="800" y2="180" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="186" x2="800" y2="186" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="192" x2="800" y2="192" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="198" x2="800" y2="198" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="204" x2="800" y2="204" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="210" x2="800" y2="210" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="216" x2="800" y2="216" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="222" x2="800" y2="222" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="228" x2="800" y2="228" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="234" x2="800" y2="234" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="240" x2="800" y2="240" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="246" x2="800" y2="246" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="252" x2="800" y2="252" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="258" x2="800" y2="258" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="264" x2="800" y2="264" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="270" x2="800" y2="270" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="276" x2="800" y2="276" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="282" x2="800" y2="282" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="288" x2="800" y2="288" stroke="#D2DCC6" stroke-width="1"/>
+<line x1="0" y1="294" x2="800" y2="294" stroke="#D2DCC6" stroke-width="1"/>
+<rect x="600" y="-30" width="260" height="380" rx="6" fill="#C9D6BC" transform="rotate(8 700 150)"/>
+<rect x="600" y="-30" width="260" height="380" rx="6" fill="none" stroke="#B6C6A7" stroke-width="2" stroke-dasharray="2 6" transform="rotate(8 700 150) translate(10 0)"/>
+<g filter="url(#ombra)"><circle cx="470" cy="150" r="128" fill="url(#piatto)"/></g>
+<circle cx="470" cy="150" r="112" fill="none" stroke="#E2DCCD" stroke-width="2"/>
+<g transform="translate(419.7 119.0) rotate(48)"><path d="M0 0 C 9.6 -14, 24.0 -14, 32 0 C 24.0 14, 9.6 14, 0 0 Z" fill="#5E8C4F"/><path d="M1.6 0 L 29.44 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(419.1 115.7) rotate(222)"><path d="M0 0 C 9.299999999999999 -10, 23.25 -10, 31 0 C 23.25 10, 9.299999999999999 10, 0 0 Z" fill="#7EA863"/><path d="M1.55 0 L 28.52 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(412.3 116.1) rotate(63)"><path d="M0 0 C 9.299999999999999 -14, 23.25 -14, 31 0 C 23.25 14, 9.299999999999999 14, 0 0 Z" fill="#93B872"/><path d="M1.55 0 L 28.52 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(450.4 102.5) rotate(113)"><path d="M0 0 C 12.6 -10, 31.5 -10, 42 0 C 31.5 10, 12.6 10, 0 0 Z" fill="#5E8C4F"/><path d="M2.1 0 L 38.64 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(457.6 118.4) rotate(276)"><path d="M0 0 C 12.9 -11, 32.25 -11, 43 0 C 32.25 11, 12.9 11, 0 0 Z" fill="#4C7A45"/><path d="M2.15 0 L 39.56 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(437.3 119.7) rotate(292)"><path d="M0 0 C 9.9 -14, 24.75 -14, 33 0 C 24.75 14, 9.9 14, 0 0 Z" fill="#7EA863"/><path d="M1.6500000000000001 0 L 30.360000000000003 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(413.0 97.7) rotate(105)"><path d="M0 0 C 9.299999999999999 -14, 23.25 -14, 31 0 C 23.25 14, 9.299999999999999 14, 0 0 Z" fill="#5E8C4F"/><path d="M1.55 0 L 28.52 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(401.3 110.5) rotate(232)"><path d="M0 0 C 13.2 -14, 33.0 -14, 44 0 C 33.0 14, 13.2 14, 0 0 Z" fill="#4C7A45"/><path d="M2.2 0 L 40.480000000000004 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(415.4 119.7) rotate(294)"><path d="M0 0 C 11.1 -10, 27.75 -10, 37 0 C 27.75 10, 11.1 10, 0 0 Z" fill="#7EA863"/><path d="M1.85 0 L 34.04 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(418.0 128.4) rotate(311)"><path d="M0 0 C 13.2 -12, 33.0 -12, 44 0 C 33.0 12, 13.2 12, 0 0 Z" fill="#4C7A45"/><path d="M2.2 0 L 40.480000000000004 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(435.6 108.9) rotate(77)"><path d="M0 0 C 10.5 -12, 26.25 -12, 35 0 C 26.25 12, 10.5 12, 0 0 Z" fill="#93B872"/><path d="M1.75 0 L 32.2 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(443.5 102.9) rotate(355)"><path d="M0 0 C 12.0 -12, 30.0 -12, 40 0 C 30.0 12, 12.0 12, 0 0 Z" fill="#5E8C4F"/><path d="M2.0 0 L 36.800000000000004 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(411.7 125.7) rotate(138)"><path d="M0 0 C 9.6 -10, 24.0 -10, 32 0 C 24.0 10, 9.6 10, 0 0 Z" fill="#93B872"/><path d="M1.6 0 L 29.44 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(397.4 113.9) rotate(295)"><path d="M0 0 C 11.7 -15, 29.25 -15, 39 0 C 29.25 15, 11.7 15, 0 0 Z" fill="#5E8C4F"/><path d="M1.9500000000000002 0 L 35.88 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(457.9 108.8) rotate(177)"><path d="M0 0 C 12.6 -15, 31.5 -15, 42 0 C 31.5 15, 12.6 15, 0 0 Z" fill="#4C7A45"/><path d="M2.1 0 L 38.64 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(446.3 112.6) rotate(30)"><path d="M0 0 C 9.9 -13, 24.75 -13, 33 0 C 24.75 13, 9.9 13, 0 0 Z" fill="#7EA863"/><path d="M1.6500000000000001 0 L 30.360000000000003 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<ellipse cx="427.3" cy="219.0" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="401.6" cy="198.4" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="377.3" cy="186.5" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="439.3" cy="182.1" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="463.2" cy="195.2" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="440.7" cy="193.9" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="445.6" cy="224.4" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="383.8" cy="200.9" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="418.2" cy="213.0" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="400.2" cy="183.6" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="408.9" cy="171.3" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="461.4" cy="188.2" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="396.8" cy="213.0" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="413.7" cy="190.5" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="455.0" cy="195.4" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="415.9" cy="205.7" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="388.6" cy="186.1" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="412.0" cy="191.0" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="407.5" cy="187.9" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="459.3" cy="189.4" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="455.0" cy="223.7" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="394.3" cy="200.7" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="445.4" cy="212.0" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="380.8" cy="202.5" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="435.5" cy="235.5" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="444.3" cy="221.5" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="423.4" cy="176.2" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="413.5" cy="178.7" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="447.0" cy="185.0" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="378.8" cy="190.8" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="396.4" cy="174.3" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="437.6" cy="164.0" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="432.9" cy="224.7" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="466.3" cy="195.7" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="419.6" cy="231.2" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="470.7" cy="195.1" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="436.0" cy="204.2" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="429.4" cy="215.1" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="381.9" cy="202.2" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="430.8" cy="186.1" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="430.7" cy="164.1" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="447.2" cy="181.1" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="463.6" cy="218.2" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="380.0" cy="205.9" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="418.7" cy="181.7" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="459.9" cy="203.3" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="428.6" cy="183.7" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="405.7" cy="178.2" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="466.3" cy="202.8" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="374.4" cy="191.6" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="444.0" cy="196.5" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="444.7" cy="201.2" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="424.5" cy="175.2" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="428.2" cy="189.5" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="454.6" cy="178.5" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="443.8" cy="164.8" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="386.5" cy="192.3" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="452.7" cy="172.7" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="425.2" cy="182.7" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="380.0" cy="203.6" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="405.5" cy="223.6" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="425.5" cy="185.3" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="422.2" cy="219.0" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="384.6" cy="196.5" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="385.3" cy="208.9" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="410.2" cy="172.8" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="397.1" cy="197.0" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="463.8" cy="180.4" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="431.9" cy="185.5" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="400.1" cy="212.1" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="401.2" cy="206.0" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="432.0" cy="161.0" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="459.2" cy="186.1" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="451.3" cy="227.4" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="431.3" cy="236.3" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="437.1" cy="187.3" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="439.3" cy="220.3" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="410.3" cy="213.0" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="447.3" cy="211.2" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="390.7" cy="189.2" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="395.1" cy="217.1" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="409.4" cy="197.2" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="437.9" cy="195.7" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="415.5" cy="235.7" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="419.7" cy="212.3" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="446.1" cy="171.3" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="391.6" cy="214.3" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="417.4" cy="186.6" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="428.6" cy="181.7" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="421.2" cy="203.2" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="426.6" cy="187.0" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="464.4" cy="213.1" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="471.7" cy="200.9" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="445.2" cy="188.8" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="462.6" cy="207.0" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="447.1" cy="194.1" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="430.3" cy="219.3" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="399.7" cy="194.5" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="400.9" cy="198.0" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="438.5" cy="160.4" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="464.6" cy="201.3" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="397.3" cy="196.2" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="457.5" cy="220.4" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="401.5" cy="173.4" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="449.3" cy="193.9" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="451.1" cy="195.4" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="397.7" cy="211.3" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="425.1" cy="193.9" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="411.3" cy="202.0" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="450.1" cy="174.2" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="388.1" cy="178.6" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="402.8" cy="202.0" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="452.2" cy="198.5" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="458.4" cy="192.9" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="467.9" cy="206.1" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="421.0" cy="199.0" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="444.8" cy="208.6" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="422.5" cy="233.2" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="420.7" cy="209.9" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="395.2" cy="185.0" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="413.9" cy="216.2" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="398.8" cy="169.7" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="425.8" cy="164.2" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="447.1" cy="225.5" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="466.0" cy="207.9" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="417.4" cy="162.1" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="458.6" cy="179.4" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="439.6" cy="170.9" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="430.8" cy="202.2" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="451.7" cy="191.8" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="385.0" cy="186.6" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="419.1" cy="198.2" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="421.6" cy="169.6" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="415.1" cy="189.3" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="421.8" cy="208.9" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="426.2" cy="232.6" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="418.8" cy="158.6" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="429.8" cy="188.9" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="426.2" cy="166.8" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="439.0" cy="205.2" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="397.9" cy="170.9" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="434.3" cy="198.8" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="437.5" cy="195.8" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="409.9" cy="178.7" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="388.7" cy="204.0" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="459.0" cy="196.8" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="469.9" cy="192.7" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="418.6" cy="208.7" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="453.1" cy="197.1" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="435.4" cy="203.4" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="439.4" cy="193.7" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="453.8" cy="176.1" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="406.3" cy="207.9" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="408.7" cy="174.8" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="395.5" cy="210.3" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="423.1" cy="196.6" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="431.2" cy="186.3" rx="3.2" ry="2.6" fill="#D8B973"/>
+<ellipse cx="411.1" cy="161.0" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="421.7" cy="208.2" rx="3.2" ry="2.6" fill="#C9A45E"/>
+<ellipse cx="460.4" cy="197.8" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="460.8" cy="182.3" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="419.8" cy="206.9" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="409.2" cy="186.4" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="396.1" cy="206.8" rx="3.2" ry="2.6" fill="#EAD6A6"/>
+<ellipse cx="429.2" cy="172.5" rx="3.2" ry="2.6" fill="#E3C98F"/>
+<ellipse cx="437.1" cy="168.6" rx="3.2" ry="2.6" fill="#D8B973"/>
+<circle cx="512.6" cy="200.1" r="8" fill="#D9A95A"/><path d="M509.6 198.1 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="511.5" cy="187.8" r="8" fill="#D9A95A"/><path d="M508.5 185.8 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="514.5" cy="184.2" r="8" fill="#D9A95A"/><path d="M511.5 182.2 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="512.3" cy="211.9" r="8" fill="#D9A95A"/><path d="M509.3 209.9 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="524.9" cy="201.7" r="8" fill="#D9A95A"/><path d="M521.9 199.7 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="494.4" cy="208.8" r="8" fill="#D9A95A"/><path d="M491.4 206.8 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="505.4" cy="228.3" r="8" fill="#D9A95A"/><path d="M502.4 226.3 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="531.2" cy="203.9" r="8" fill="#D9A95A"/><path d="M528.2 201.9 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="503.6" cy="193.6" r="8" fill="#D9A95A"/><path d="M500.6 191.6 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="494.0" cy="200.0" r="8" fill="#D9A95A"/><path d="M491.0 198.0 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="520.8" cy="215.5" r="8" fill="#D9A95A"/><path d="M517.8 213.5 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="522.5" cy="231.0" r="8" fill="#D9A95A"/><path d="M519.5 229.0 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="498.1" cy="206.2" r="8" fill="#D9A95A"/><path d="M495.1 204.2 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<circle cx="542.2" cy="190.9" r="8" fill="#D9A95A"/><path d="M539.2 188.9 q3 -3 6 0" stroke="#B9852E" stroke-width="1.4" fill="none"/>
+<g transform="translate(387.4 118.9) rotate(231)"><path d="M0 0 C 12.0 -12, 30.0 -12, 40 0 C 30.0 12, 12.0 12, 0 0 Z" fill="#557F48"/><path d="M2.0 0 L 36.800000000000004 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(432.9 100.5) rotate(243)"><path d="M0 0 C 12.0 -13, 30.0 -13, 40 0 C 30.0 13, 12.0 13, 0 0 Z" fill="#557F48"/><path d="M2.0 0 L 36.800000000000004 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(404.2 102.5) rotate(72)"><path d="M0 0 C 10.5 -11, 26.25 -11, 35 0 C 26.25 11, 10.5 11, 0 0 Z" fill="#6E9A57"/><path d="M1.75 0 L 32.2 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(396.5 93.8) rotate(334)"><path d="M0 0 C 10.2 -12, 25.5 -12, 34 0 C 25.5 12, 10.2 12, 0 0 Z" fill="#557F48"/><path d="M1.7000000000000002 0 L 31.28 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(405.1 102.9) rotate(32)"><path d="M0 0 C 8.4 -13, 21.0 -13, 28 0 C 21.0 13, 8.4 13, 0 0 Z" fill="#6E9A57"/><path d="M1.4000000000000001 0 L 25.76 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(464.2 118.9) rotate(237)"><path d="M0 0 C 11.1 -9, 27.75 -9, 37 0 C 27.75 9, 11.1 9, 0 0 Z" fill="#88AF6A"/><path d="M1.85 0 L 34.04 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(379.0 123.1) rotate(327)"><path d="M0 0 C 10.799999999999999 -10, 27.0 -10, 36 0 C 27.0 10, 10.799999999999999 10, 0 0 Z" fill="#88AF6A"/><path d="M1.8 0 L 33.120000000000005 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(382.3 112.0) rotate(208)"><path d="M0 0 C 10.5 -11, 26.25 -11, 35 0 C 26.25 11, 10.5 11, 0 0 Z" fill="#557F48"/><path d="M1.75 0 L 32.2 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(464.0 111.2) rotate(161)"><path d="M0 0 C 11.7 -11, 29.25 -11, 39 0 C 29.25 11, 11.7 11, 0 0 Z" fill="#6E9A57"/><path d="M1.9500000000000002 0 L 35.88 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(404.6 111.1) rotate(205)"><path d="M0 0 C 11.1 -9, 27.75 -9, 37 0 C 27.75 9, 11.1 9, 0 0 Z" fill="#6E9A57"/><path d="M1.85 0 L 34.04 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(436.0 96.2) rotate(109)"><path d="M0 0 C 8.4 -9, 21.0 -9, 28 0 C 21.0 9, 8.4 9, 0 0 Z" fill="#6E9A57"/><path d="M1.4000000000000001 0 L 25.76 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(434.6 107.1) rotate(214)"><path d="M0 0 C 10.2 -12, 25.5 -12, 34 0 C 25.5 12, 10.2 12, 0 0 Z" fill="#6E9A57"/><path d="M1.7000000000000002 0 L 31.28 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(400.4 106.1) rotate(172)"><path d="M0 0 C 11.4 -11, 28.5 -11, 38 0 C 28.5 11, 11.4 11, 0 0 Z" fill="#6E9A57"/><path d="M1.9000000000000001 0 L 34.96 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<circle cx="370" cy="158" r="11" fill="#F7E9EC" stroke="#C0506A" stroke-width="3"/><circle cx="370" cy="158" r="4" fill="#F0D3DA"/>
+<circle cx="392" cy="164" r="11" fill="#F7E9EC" stroke="#C0506A" stroke-width="3"/><circle cx="392" cy="164" r="4" fill="#F0D3DA"/>
+<circle cx="412" cy="156" r="11" fill="#F7E9EC" stroke="#C0506A" stroke-width="3"/><circle cx="412" cy="156" r="4" fill="#F0D3DA"/>
+<circle cx="500" cy="88" r="15" fill="url(#pom)"/>
+<path d="M500 73 l-5 -4 M500 73 l5 -4 M500 73 l0 -6" stroke="#3E6B3A" stroke-width="2.4" stroke-linecap="round"/>
+<ellipse cx="495" cy="83" rx="4" ry="2.4" fill="#fff" opacity="0.35"/>
+<circle cx="532" cy="110" r="15" fill="url(#pom)"/>
+<path d="M532 95 l-5 -4 M532 95 l5 -4 M532 95 l0 -6" stroke="#3E6B3A" stroke-width="2.4" stroke-linecap="round"/>
+<ellipse cx="527" cy="105" rx="4" ry="2.4" fill="#fff" opacity="0.35"/>
+<circle cx="508" cy="122" r="15" fill="url(#pom)"/>
+<path d="M508 107 l-5 -4 M508 107 l5 -4 M508 107 l0 -6" stroke="#3E6B3A" stroke-width="2.4" stroke-linecap="round"/>
+<ellipse cx="503" cy="117" rx="4" ry="2.4" fill="#fff" opacity="0.35"/>
+<circle cx="544" cy="78" r="15" fill="url(#pom)"/>
+<path d="M544 63 l-5 -4 M544 63 l5 -4 M544 63 l0 -6" stroke="#3E6B3A" stroke-width="2.4" stroke-linecap="round"/>
+<ellipse cx="539" cy="73" rx="4" ry="2.4" fill="#fff" opacity="0.35"/>
+<circle cx="484" cy="64" r="15" fill="url(#pom)"/>
+<path d="M484 49 l-5 -4 M484 49 l5 -4 M484 49 l0 -6" stroke="#3E6B3A" stroke-width="2.4" stroke-linecap="round"/>
+<ellipse cx="479" cy="59" rx="4" ry="2.4" fill="#fff" opacity="0.35"/>
+<ellipse cx="550" cy="158" rx="30" ry="22" fill="#FFFDF7" stroke="#EDE6D6" stroke-width="2"/>
+<circle cx="552" cy="159" r="12" fill="#F0B43A"/><circle cx="548" cy="155" r="4" fill="#F7CD6A"/>
+<g transform="translate(468 154) rotate(-20)"><ellipse rx="26" ry="18" fill="#C7D98B"/><ellipse rx="26" ry="18" fill="none" stroke="#4E6B2F" stroke-width="3"/><circle cx="4" r="9" fill="#8A5A36"/></g>
+<ellipse cx="440.6" cy="159.6" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(49 440.6 159.6)"/>
+<ellipse cx="471.2" cy="183.6" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(142 471.2 183.6)"/>
+<ellipse cx="502.5" cy="170.9" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(66 502.5 170.9)"/>
+<ellipse cx="483.0" cy="116.7" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(5 483.0 116.7)"/>
+<ellipse cx="469.9" cy="97.8" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(105 469.9 97.8)"/>
+<ellipse cx="469.0" cy="113.6" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(69 469.0 113.6)"/>
+<ellipse cx="456.9" cy="171.1" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(71 456.9 171.1)"/>
+<ellipse cx="427.1" cy="128.4" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(175 427.1 128.4)"/>
+<ellipse cx="400.9" cy="148.5" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(55 400.9 148.5)"/>
+<ellipse cx="545.2" cy="199.4" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(98 545.2 199.4)"/>
+<ellipse cx="425.7" cy="182.3" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(79 425.7 182.3)"/>
+<ellipse cx="521.2" cy="78.3" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(5 521.2 78.3)"/>
+<ellipse cx="507.1" cy="188.1" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(121 507.1 188.1)"/>
+<ellipse cx="527.1" cy="138.5" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(18 527.1 138.5)"/>
+<ellipse cx="398.3" cy="208.1" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(135 398.3 208.1)"/>
+<ellipse cx="529.0" cy="74.4" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(63 529.0 74.4)"/>
+<ellipse cx="477.7" cy="113.4" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(38 477.7 113.4)"/>
+<ellipse cx="397.5" cy="139.7" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(179 397.5 139.7)"/>
+<ellipse cx="422.1" cy="86.3" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(117 422.1 86.3)"/>
+<ellipse cx="539.4" cy="191.0" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(0 539.4 191.0)"/>
+<ellipse cx="477.7" cy="112.6" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(9 477.7 112.6)"/>
+<ellipse cx="443.3" cy="115.4" rx="2" ry="1.1" fill="#F5EEDB" transform="rotate(32 443.3 115.4)"/>
+<g filter="url(#ombra)"><circle cx="170" cy="92" r="54" fill="#E7C23E"/></g>
+<circle cx="170" cy="92" r="46" fill="#F7E48A"/>
+<path d="M170 92 L 211.8 87.6 A 42 42 0 0 1 207.7 110.4 Z" fill="#F2D65C" stroke="#FBF1C0" stroke-width="3" stroke-linejoin="round"/>
+<path d="M170 92 L 204.8 115.5 A 42 42 0 0 1 187.1 130.4 Z" fill="#F2D65C" stroke="#FBF1C0" stroke-width="3" stroke-linejoin="round"/>
+<path d="M170 92 L 181.6 132.4 A 42 42 0 0 1 158.4 132.4 Z" fill="#F2D65C" stroke="#FBF1C0" stroke-width="3" stroke-linejoin="round"/>
+<path d="M170 92 L 152.9 130.4 A 42 42 0 0 1 135.2 115.5 Z" fill="#F2D65C" stroke="#FBF1C0" stroke-width="3" stroke-linejoin="round"/>
+<path d="M170 92 L 132.3 110.4 A 42 42 0 0 1 128.2 87.6 Z" fill="#F2D65C" stroke="#FBF1C0" stroke-width="3" stroke-linejoin="round"/>
+<path d="M170 92 L 129.2 81.9 A 42 42 0 0 1 140.8 61.8 Z" fill="#F2D65C" stroke="#FBF1C0" stroke-width="3" stroke-linejoin="round"/>
+<path d="M170 92 L 145.3 58.0 A 42 42 0 0 1 167.1 50.1 Z" fill="#F2D65C" stroke="#FBF1C0" stroke-width="3" stroke-linejoin="round"/>
+<path d="M170 92 L 172.9 50.1 A 42 42 0 0 1 194.7 58.0 Z" fill="#F2D65C" stroke="#FBF1C0" stroke-width="3" stroke-linejoin="round"/>
+<path d="M170 92 L 199.2 61.8 A 42 42 0 0 1 210.8 81.9 Z" fill="#F2D65C" stroke="#FBF1C0" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="170" cy="92" r="6" fill="#FBF1C0"/>
+<g filter="url(#ombra)"><circle cx="270" cy="236" r="46" fill="#F4F1E8"/></g>
+<circle cx="270" cy="236" r="36" fill="#E9E4D6"/>
+<circle cx="256.3" cy="222.0" r="7.5" fill="url(#mirt)"/><circle cx="254.8" cy="220.5" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="248.2" cy="245.0" r="7.5" fill="url(#mirt)"/><circle cx="246.7" cy="243.5" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="282.0" cy="244.7" r="7.5" fill="url(#mirt)"/><circle cx="280.5" cy="243.2" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="281.1" cy="231.9" r="7.5" fill="url(#mirt)"/><circle cx="279.6" cy="230.4" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="268.4" cy="259.9" r="7.5" fill="url(#mirt)"/><circle cx="266.9" cy="258.4" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="289.8" cy="236.1" r="7.5" fill="url(#mirt)"/><circle cx="288.3" cy="234.6" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="284.2" cy="235.7" r="7.5" fill="url(#mirt)"/><circle cx="282.7" cy="234.2" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="260.0" cy="258.6" r="7.5" fill="url(#mirt)"/><circle cx="258.5" cy="257.1" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="270.9" cy="255.6" r="7.5" fill="url(#mirt)"/><circle cx="269.4" cy="254.1" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="265.6" cy="234.7" r="7.5" fill="url(#mirt)"/><circle cx="264.1" cy="233.2" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="251.5" cy="247.5" r="7.5" fill="url(#mirt)"/><circle cx="250.0" cy="246.0" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="281.2" cy="240.1" r="7.5" fill="url(#mirt)"/><circle cx="279.7" cy="238.6" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="286.3" cy="221.6" r="7.5" fill="url(#mirt)"/><circle cx="284.8" cy="220.1" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="281.3" cy="242.3" r="7.5" fill="url(#mirt)"/><circle cx="279.8" cy="240.8" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="255.4" cy="243.5" r="7.5" fill="url(#mirt)"/><circle cx="253.9" cy="242.0" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="247.5" cy="237.0" r="7.5" fill="url(#mirt)"/><circle cx="246.0" cy="235.5" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="266.8" cy="220.1" r="7.5" fill="url(#mirt)"/><circle cx="265.3" cy="218.6" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="268.2" cy="237.3" r="7.5" fill="url(#mirt)"/><circle cx="266.7" cy="235.8" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="263.5" cy="260.0" r="7.5" fill="url(#mirt)"/><circle cx="262.0" cy="258.5" r="1.6" fill="#241F40" opacity="0.6"/>
+<circle cx="287.3" cy="243.8" r="7.5" fill="url(#mirt)"/><circle cx="285.8" cy="242.3" r="1.6" fill="#241F40" opacity="0.6"/>
+<path d="M40 250 C 90 225, 120 205, 150 170" stroke="#4C7A45" stroke-width="3" fill="none" stroke-linecap="round"/>
+<g transform="translate(70 236) rotate(-130)"><path d="M0 0 C 10.2 -12, 25.5 -12, 34 0 C 25.5 12, 10.2 12, 0 0 Z" fill="#5E8C4F"/><path d="M1.7000000000000002 0 L 31.28 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(72 238) rotate(40)"><path d="M0 0 C 9.6 -12, 24.0 -12, 32 0 C 24.0 12, 9.6 12, 0 0 Z" fill="#5E8C4F"/><path d="M1.6 0 L 29.44 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(100 218) rotate(-120)"><path d="M0 0 C 11.4 -12, 28.5 -12, 38 0 C 28.5 12, 11.4 12, 0 0 Z" fill="#5E8C4F"/><path d="M1.9000000000000001 0 L 34.96 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(104 220) rotate(30)"><path d="M0 0 C 10.799999999999999 -12, 27.0 -12, 36 0 C 27.0 12, 10.799999999999999 12, 0 0 Z" fill="#5E8C4F"/><path d="M1.8 0 L 33.120000000000005 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(128 196) rotate(-110)"><path d="M0 0 C 10.2 -12, 25.5 -12, 34 0 C 25.5 12, 10.2 12, 0 0 Z" fill="#5E8C4F"/><path d="M1.7000000000000002 0 L 31.28 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(132 196) rotate(20)"><path d="M0 0 C 9.6 -12, 24.0 -12, 32 0 C 24.0 12, 9.6 12, 0 0 Z" fill="#5E8C4F"/><path d="M1.6 0 L 29.44 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<g transform="translate(148 172) rotate(-60)"><path d="M0 0 C 9.0 -12, 22.5 -12, 30 0 C 22.5 12, 9.0 12, 0 0 Z" fill="#5E8C4F"/><path d="M1.5 0 L 27.6 0" stroke="#2B4A36" stroke-opacity="0.35" stroke-width="1.4" fill="none"/></g>
+<ellipse cx="96.1" cy="226.8" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(49 96.1 226.8)"/>
+<ellipse cx="106.2" cy="79.8" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(75 106.2 79.8)"/>
+<ellipse cx="66.0" cy="188.4" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(156 66.0 188.4)"/>
+<ellipse cx="91.8" cy="80.3" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(106 91.8 80.3)"/>
+<ellipse cx="330.4" cy="35.2" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(152 330.4 35.2)"/>
+<ellipse cx="78.3" cy="126.2" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(54 78.3 126.2)"/>
+<ellipse cx="37.8" cy="181.0" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(106 37.8 181.0)"/>
+<ellipse cx="47.1" cy="36.2" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(100 47.1 36.2)"/>
+<ellipse cx="178.4" cy="212.2" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(80 178.4 212.2)"/>
+<ellipse cx="337.4" cy="108.9" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(47 337.4 108.9)"/>
+<ellipse cx="245.3" cy="161.7" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(119 245.3 161.7)"/>
+<ellipse cx="40.5" cy="199.4" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(96 40.5 199.4)"/>
+<ellipse cx="306.9" cy="285.9" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(113 306.9 285.9)"/>
+<ellipse cx="85.9" cy="20.8" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(71 85.9 20.8)"/>
+<ellipse cx="56.7" cy="133.4" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(31 56.7 133.4)"/>
+<ellipse cx="215.2" cy="224.9" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(97 215.2 224.9)"/>
+<ellipse cx="147.7" cy="241.8" rx="3" ry="1.7" fill="#E9DDB8" transform="rotate(110 147.7 241.8)"/>
+<g transform="translate(680 30) rotate(8)"><rect x="-3" y="60" width="6" height="200" rx="3" fill="#A9B3A4"/><path d="M-14 0 v40 q0 22 14 22 q14 0 14 -22 v-40" fill="none" stroke="#A9B3A4" stroke-width="5" stroke-linecap="round"/><path d="M-5 0 v36 M5 0 v36" stroke="#A9B3A4" stroke-width="4" stroke-linecap="round"/></g>
+</svg></div>
+</section>
+
+<section class="problem"><div class="wrap">
+  <div><h2>Il piano funziona quando viene seguito.</h2><p style="color:var(--soft)">Tra una visita e l'altra il paziente resta solo con un PDF: dimentica gli orari, non sa con cosa sostituire un alimento, fa la spesa a memoria. Il mio Piano lo accompagna proprio in quei giorni.</p></div>
+  <div class="pillars">
+    <div class="pill"><div class="ic" style="background:#C9962A"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div><h3>Ricorda</h3><p>Una notifica prima di ogni pasto, con il menu del momento, anche ad app chiusa.</p></div>
+    <div class="pill"><div class="ic" style="background:#235C52"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m8 12.3 2.7 2.7L16.2 9.5"/></svg></div><h3>Guida</h3><p>Menu del giorno, spunta del pasto fatto, lista della spesa pronta per la settimana.</p></div>
+    <div class="pill"><div class="ic" style="background:#4B3B63"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12Z"/><path d="M8.5 11h7M8.5 14h4.5"/></svg></div><h3>Collega</h3><p>Il paziente ti contatta con un tocco, via WhatsApp, email o telefono.</p></div>
+  </div>
+</div></section>
+
+<section id="come-funziona"><div class="wrap">
+  <h2>Come funziona</h2>
+  <p class="intro">Nessuna app da scaricare dagli store e niente file da inviare: il piano vive nel cloud e ogni modifica che fai arriva al paziente in pochi secondi.</p>
+  <div class="flow">
+    <div class="fc"><span class="num">1</span><div class="big"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></svg></div><h3>Tu scrivi il piano</h3><p>Dal PC dello studio o dal telefono, nel pannello professionista.</p><ul><li>pasti di ogni giorno, fino a 5 settimane</li><li>regole generali e obiettivo</li><li>gruppi di alimenti equivalenti</li></ul></div>
+    <div class="arr"><svg width="44" height="20" viewBox="0 0 44 20" aria-hidden="true"><path d="M2 10h34" stroke="#B9852E" stroke-width="2" stroke-dasharray="4 4"/><path d="m31 4 7 6-7 6" fill="none" stroke="#B9852E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="fc"><span class="num">2</span><div class="big"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18.5h10.5a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.6 9.1 4.7 4.7 0 0 0 7 18.5Z"/></svg></div><h3>Si sincronizza da solo</h3><p>Il piano è salvato in un cloud sicuro e aggiornato su ogni dispositivo del paziente.</p><ul><li>nessun PDF da rimandare</li><li>una correzione vale subito</li><li>accesso con credenziali personali</li></ul></div>
+    <div class="arr"><svg width="44" height="20" viewBox="0 0 44 20" aria-hidden="true"><path d="M2 10h34" stroke="#B9852E" stroke-width="2" stroke-dasharray="4 4"/><path d="m31 4 7 6-7 6" fill="none" stroke="#B9852E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div class="fc"><span class="num">3</span><div class="big"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6.5" y="2.5" width="11" height="19" rx="2.3"/><path d="M10.5 18.5h3"/></svg></div><h3>Il paziente lo segue</h3><p>Sul suo telefono trova ogni giorno il menu giusto, già pronto.</p><ul><li>promemoria prima dei pasti</li><li>spunta dei pasti fatti</li><li>lista della spesa e sostituzioni</li></ul></div>
+  </div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Due app in una, ognuno al suo posto</h2>
+  <p class="intro">Le decisioni cliniche restano tue. Il paziente consulta e usa il piano, ma non può modificarlo.</p>
+  <div class="roles">
+    <div class="role pro"><div class="rh"><span class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16v4Z"/><path d="m13.5 6.5 4 4"/></svg></span><h3>Pannello professionista<small>Tu, dallo studio</small></h3></div>
+      <ul><li>Crei i pazienti e consegni le credenziali di accesso</li><li>Scrivi e modifichi ogni pasto, giorno per giorno</li><li>Copi una settimana nelle altre in un clic</li><li>Imposti obiettivo, target calorico e regole del piano</li><li>Definisci i gruppi di alimenti sostituibili</li><li>Inserisci i tuoi contatti, visibili a tutti i tuoi pazienti</li></ul></div>
+    <div class="role paz"><div class="rh"><span class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg></span><h3>App del paziente<small>Il tuo paziente, ogni giorno</small></h3></div>
+      <ul><li>Vede il menu di oggi e quello di tutta la settimana</li><li>Riceve i promemoria all'orario dei suoi pasti</li><li>Spunta i pasti fatti e vede i progressi del giorno</li><li>Ha la lista della spesa della settimana già compilata</li><li>Sceglie tra le alternative che hai indicato tu</li><li>Ti scrive o ti chiama con il pulsante Contatta</li></ul></div>
+  </div>
+</div></section>
+
+<section id="funzioni" style="background:var(--bg)"><div class="wrap">
+  <h2>Le funzioni principali</h2>
+  <p class="intro">Pensate per una cosa sola: aiutare il paziente ad applicare il piano, un pasto alla volta.</p>
+  <div class="feats"><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><h3>Menu di oggi</h3><p>La giornata in ordine di orario, con i pasti colorati per momento: colazione, spuntini, pranzo, cena.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="16" rx="2.2"/><path d="M3.5 9.5h17M8 3v3M16 3v3"/></svg></div><h3>Vista settimana</h3><p>Tutta la settimana del piano, anche quelle successive, sempre consultabile.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div><h3>Promemoria veri</h3><p>Una notifica 10, 15, 20 o 30 minuti prima di ogni pasto, anche con l'app chiusa.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m8 12.3 2.7 2.7L16.2 9.5"/></svg></div><h3>Spunta del pasto</h3><p>Il paziente segna i pasti fatti e vede i progressi della giornata.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12l-1.2 10.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div><h3>Lista della spesa</h3><p>Creata in automatico dagli ingredienti della settimana, da spuntare o copiare.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13l-3.5-3.5M20 16H7l3.5 3.5"/></svg></div><h3>Sostituzioni</h3><p>Fino a 3 alternative equivalenti per ogni alimento, scelte da te.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4.2A8 8 0 1 1 20 12Z"/><path d="M8.5 11h7M8.5 14h4.5"/></svg></div><h3>Pulsante Contatta</h3><p>WhatsApp, email o telefono del professionista a portata di tocco.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="18" r="1.2"/></svg></div><h3>Regole del piano</h3><p>Olio, acqua, cotture, pasto libero: le tue indicazioni sempre in vista.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"/><path d="M15.5 8.5V6a1.5 1.5 0 0 0-1.5-1.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 15.5h2.5"/></svg></div><h3>Copia settimana</h3><p>Settimane uguali? Ne compili una e la copi nelle altre in un clic.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3.5H7A1.5 1.5 0 0 0 5.5 5v14A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5V8L14 3.5Z"/><path d="M14 3.5V8h4.5"/></svg></div><h3>Importa ed esporta</h3><p>Scarichi un piano come modello e lo riusi per un nuovo paziente.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="13" height="10" rx="1.5"/><path d="M1.5 18.5h16"/><rect x="17" y="8" width="5.5" height="11" rx="1.2"/></svg></div><h3>Ovunque</h3><p>Android, iPhone e computer. Si installa sulla schermata Home, senza store.</p></div><div class="ft"><div class="ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg></div><h3>Accesso protetto</h3><p>Ogni paziente accede con email e password e vede solo il proprio piano.</p></div></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Una giornata con Il mio Piano</h2>
+  <p class="intro">Ecco come l'app sostiene il paziente nei momenti in cui di solito il piano si perde.</p>
+  <div class="daybox"><div class="day"><div class="line"></div><div class="row"><div><div class="t">07:45</div><div class="d" style="background:#C9962A"></div><b>Promemoria</b><span>«Tra 15 minuti: colazione», con il menu già scritto.</span></div><div><div class="t">08:00</div><div class="d" style="background:#C9962A"></div><b>Colazione</b><span>Mangia e spunta il pasto: la barra dei progressi avanza.</span></div><div><div class="t">13:00</div><div class="d" style="background:#235C52"></div><b>Pranzo fuori</b><span>Manca il pollo? Tocca Sostituisci e sceglie il tacchino che hai previsto.</span></div><div><div class="t">16:30</div><div class="d" style="background:#A15C72"></div><b>Merenda</b><span>Il promemoria arriva anche con il telefono in tasca.</span></div><div><div class="t">18:30</div><div class="d" style="background:#7E9B6E"></div><b>Spesa</b><span>Apre la lista della settimana e compra solo ciò che serve.</span></div><div><div class="t">21:00</div><div class="d" style="background:#4B3B63"></div><b>Un dubbio</b><span>Tocca Contatta e ti scrive su WhatsApp.</span></div></div></div></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <h2>Perché è strategica per il tuo studio</h2>
+  <p class="intro">Non sostituisce la tua consulenza: la porta nella vita di tutti i giorni del paziente.</p>
+  <div class="why">
+    <div class="wy"><span class="n">1</span><div><h3>Più aderenza, risultati più visibili</h3><p>Il paziente non deve ricordare nulla: l'app gli dice cosa mangiare e quando. Arriva al controllo avendo seguito davvero il piano.</p></div></div>
+    <div class="wy"><span class="n">2</span><div><h3>Meno domande ripetitive</h3><p>"Con cosa posso sostituire il pollo?" trova risposta nelle alternative che hai già approvato, senza un messaggio a sera.</p></div></div>
+    <div class="wy"><span class="n">3</span><div><h3>Il tuo studio presente ogni giorno</h3><p>Il tuo nome, la tua qualifica e i tuoi contatti sono nell'app. Tra una visita e l'altra il paziente continua a percepire il tuo accompagnamento.</p></div></div>
+    <div class="wy"><span class="n">4</span><div><h3>Un valore in più da offrire</h3><p>Un servizio digitale che distingue la tua consulenza e che puoi includere nel percorso, a un costo di pochi euro al mese.</p></div></div>
+  </div>
+</div></section>
+
+<section class="pricing" id="prezzi"><div class="wrap">
+  <h2>Prezzi chiari, per studio</h2>
+  <p class="intro">Paga lo studio, non il paziente: per lui l'app è inclusa nel tuo percorso. Abbonamento mensile, disdici quando vuoi. Prezzi IVA esclusa.</p>
+  <div class="plans" id="plans"><div class="plan" data-plan="prova" tabindex="0" role="button" aria-pressed="false">
+      <h3>Prova</h3><div class="pz">fino a 3 pazienti</div>
+      <div class="eur">0 € <small>per 30 giorni</small></div><ul><li>Tutte le funzioni</li><li>Nessuna carta richiesta</li><li>Poi scegli se abbonarti</li></ul>
+      <span class="btn ghost">Inizia la prova</span></div><div class="plan" data-plan="base" tabindex="0" role="button" aria-pressed="false">
+      <h3>Base</h3><div class="pz">fino a 15 pazienti attivi</div>
+      <div class="eur">9 € <small>/ mese</small></div><ul><li>Tutte le funzioni</li><li>Promemoria ad app chiusa</li><li>Disdici quando vuoi</li></ul>
+      <span class="btn ghost">Scegli Base</span></div><div class="plan hl" data-plan="studio" tabindex="0" role="button" aria-pressed="false">
+      <span class="tag">Il più scelto</span><h3>Studio</h3><div class="pz">fino a 50 pazienti attivi</div>
+      <div class="eur">19 € <small>/ mese</small></div><ul><li>Tutte le funzioni</li><li>Ideale per studi avviati</li><li>Disdici quando vuoi</li></ul>
+      <span class="btn">Scegli Studio</span></div><div class="plan" data-plan="oltre" tabindex="0" role="button" aria-pressed="false">
+      <h3>Oltre 50</h3><div class="pz">studi associati e poliambulatori</div>
+      <div class="eur">Su misura</div><ul><li>Più professionisti</li><li>Condizioni dedicate</li><li>Ti rispondiamo in 48 ore</li></ul>
+      <span class="btn ghost">Chiedi un preventivo</span></div></div>
+
+  <div class="buy" id="acquista">
+    <div>
+      <h2>Attiva la tua licenza</h2>
+      <p style="color:var(--soft)">Compila i dati dello studio e procedi al pagamento sicuro. Riceverai via email la ricevuta e le istruzioni per iniziare.</p>
+      <ol class="steps">
+        <li>Scegli il piano e inserisci i dati dello studio.</li>
+        <li>Paga con carta, Apple Pay o Google Pay sulla pagina sicura di Stripe. Per la prova gratuita non serve la carta.</li>
+        <li>Entra nell'app e registrati come professionista <strong>con la stessa email</strong>: l'abbonamento si attiva da solo. Se sei già registrato, si aggiorna in pochi secondi.</li>
+      </ol>
+    </div>
+    <form id="form-acquisto" novalidate>
+      <label class="f">Piano
+        <select id="f-piano" required>
+          <option value="prova">Prova gratuita — 30 giorni, fino a 3 pazienti</option>
+          <option value="base">Base — 9 € / mese, fino a 15 pazienti</option>
+          <option value="studio" selected>Studio — 19 € / mese, fino a 50 pazienti</option>
+          <option value="oltre">Oltre 50 pazienti — preventivo</option>
+        </select></label>
+      <div class="row2">
+        <label class="f">Nome e cognome<input type="text" id="f-nome" autocomplete="name" required></label>
+        <label class="f"><span>Email <span class="o">(la stessa per accedere all'app)</span></span><input type="email" id="f-email" autocomplete="email" required></label>
+      </div>
+      <div class="row2">
+        <label class="f">Studio o ragione sociale<input type="text" id="f-studio" autocomplete="organization" required></label>
+        <label class="f"><span>Telefono <span class="o">(facoltativo)</span></span><input type="tel" id="f-tel" autocomplete="tel"></label>
+      </div>
+      <label class="f" id="wrap-pazienti" hidden>Quanti pazienti pensi di seguire?<input type="text" id="f-pazienti" placeholder="es. 80 pazienti, 3 professionisti"></label>
+      <label class="chk"><input type="checkbox" id="f-termini" required><span>Ho letto e accetto i <a href="termini.html" target="_blank">Termini di servizio</a>, l'<a href="accordo-trattamento-dati.html" target="_blank">Accordo sul trattamento dei dati dei pazienti</a> e l'<a href="privacy.html" target="_blank">Informativa privacy</a>.</span></label>
+      <div class="sum"><span id="sum-label">Piano Studio</span><b id="sum-prezzo">19 € / mese</b></div>
+      <p class="err" id="f-err" role="alert"></p>
+      <button type="submit" class="btn gold" id="f-submit">Procedi al pagamento</button>
+      <p class="secure"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg> Pagamento gestito da Stripe. I dati della carta non passano da questo sito.</p>
+    </form>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap faqwrap">
+  <h2>Domande frequenti</h2>
+  <div style="margin-top:24px"><details><summary>Il paziente deve pagare qualcosa?</summary><p>No. L'abbonamento è dello studio: il paziente riceve da te email e password e usa l'app gratuitamente.</p></details><details><summary>Serve scaricare l'app dal Play Store o dall'App Store?</summary><p>No. Il mio Piano si apre dal browser e si aggiunge alla schermata Home del telefono in pochi tocchi, come un'app normale. Funziona su Android, iPhone (iOS 16.4 o successivo) e computer.</p></details><details><summary>Le notifiche arrivano anche ad app chiusa?</summary><p>Sì. Su Android basta consentire le notifiche; su iPhone l'app va prima aggiunta alla schermata Home, poi si attivano i promemoria dalle Impostazioni dell'app. Le guide spiegano tutto passo passo.</p></details><details><summary>Il paziente può modificare il piano?</summary><p>No. Il paziente consulta il piano, spunta i pasti, usa la lista della spesa e le sostituzioni che hai previsto, e sceglie gli orari dei promemoria. Pasti, regole e dati li modifichi solo tu.</p></details><details><summary>Le sostituzioni le decide l'app?</summary><p>No, le decidi tu. Scrivi i gruppi di alimenti che consideri equivalenti e l'app li propone al paziente quando quell'alimento compare nel menu.</p></details><details><summary>Quanto tempo serve per inserire un piano?</summary><p>Il tempo di scrivere i pasti di una settimana. Se le settimane si ripetono, le copi con un clic e ritocchi solo i giorni diversi.</p></details><details><summary>Ho pagato: come si attiva l'abbonamento?</summary><p>In automatico. Registrati nell'app come professionista con la stessa email usata per il pagamento, oppure accedi se sei già registrato: in pochi secondi il pannello mostra il nuovo piano e il numero di pazienti disponibili.</p></details><details><summary>Cosa succede se non rinnovo?</summary><p>I tuoi pazienti continuano a vedere il loro piano. Tu puoi consultarlo, scaricarlo ed eliminare i pazienti, ma non modificarlo o crearne di nuovi finché non riattivi un abbonamento. Dopo 90 giorni i dati possono essere cancellati, con preavviso via email.</p></details><details><summary>Posso disdire quando voglio?</summary><p>Sì. L'abbonamento è mensile e si disdice in qualsiasi momento; resta attivo fino alla fine del mese già pagato.</p></details><details><summary>Come vengono trattati i dati dei pazienti?</summary><p>I dati sono salvati su server cloud protetti e ogni paziente vede solo il proprio piano. Tu resti titolare del trattamento dei dati dei tuoi pazienti; noi agiamo come responsabile del trattamento secondo l'accordo che accetti all'attivazione, con un modello di informativa pronto da consegnare ai pazienti.</p></details></div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <div><h2>Provalo con i tuoi primi pazienti.</h2><p>Trenta giorni gratis, attivazione immediata, nessuna installazione dagli store.</p></div>
+  <a class="btn gold" href="#acquista" data-go="prova">Inizia la prova gratuita</a>
+</div></section>
+
+<footer><div class="wrap">
+  <div><strong style="color:#EAEFE4">Il mio Piano</strong><br>Bulli e Pupe S.r.l. · P.IVA 04371320963<br>Via Visconti 18A, 20063 Cernusco sul Naviglio (MI) · <a href="mailto:info@ilmiopiano.it">info@ilmiopiano.it</a> · PEC bulliepupe@legalmail.it</div>
+  <nav><a href="privacy.html">Privacy e cookie</a><a href="termini.html">Termini di servizio</a><a href="accordo-trattamento-dati.html">Trattamento dati</a><a href="#acquista" id="link-portale">Gestisci abbonamento</a></nav>
+</div></footer>
+</div>
+
+<script>
+/* =====================================================================
+   CONFIGURAZIONE — l'unica parte da modificare
+   Incolla qui i "Payment Link" creati su Stripe (dashboard.stripe.com →
+   Link di pagamento). Finché un link è vuoto, il modulo avvisa invece di
+   procedere, così nessuno finisce su una pagina sbagliata.
+   ===================================================================== */
+const CONFIG_IMP = {
+  linkStripe: {
+    base:   "",   // es. https://buy.stripe.com/yyyy  (9 €/mese)
+    studio: ""    // es. https://buy.stripe.com/zzzz  (19 €/mese)
+  },
+  // Indirizzo dell'app: la prova gratuita porta direttamente alla registrazione.
+  linkApp: "https://bulliepupe.github.io/piano-nutrizionale_new/index.html",
+  emailPreventivi: "info@ilmiopiano.it",
+  portaleClienti: ""  // facoltativo: link al Customer Portal di Stripe per disdire/cambiare carta
+};
+
+(function () {
+  const root = document.getElementById("imp");
+  const piani = {
+    prova:  { label: "Prova gratuita", prezzo: "0 € per 30 giorni" },
+    base:   { label: "Piano Base", prezzo: "9 € / mese" },
+    studio: { label: "Piano Studio", prezzo: "19 € / mese" },
+    oltre:  { label: "Oltre 50 pazienti", prezzo: "Preventivo" }
+  };
+  const sel = root.querySelector("#f-piano");
+  const cards = root.querySelectorAll(".plan");
+
+  function scegli(piano, scorri) {
+    sel.value = piano;
+    cards.forEach(c => { const on = c.dataset.plan === piano; c.classList.toggle("on", on); c.setAttribute("aria-pressed", on); });
+    root.querySelector("#sum-label").textContent = piani[piano].label;
+    root.querySelector("#sum-prezzo").textContent = piani[piano].prezzo;
+    const oltre = piano === "oltre";
+    root.querySelector("#wrap-pazienti").hidden = !oltre;
+    root.querySelector("#f-submit").textContent = oltre ? "Invia la richiesta" : piano === "prova" ? "Crea l'account di prova" : "Procedi al pagamento";
+    if (scorri) root.querySelector("#acquista").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }
+  cards.forEach(c => {
+    c.addEventListener("click", () => scegli(c.dataset.plan, true));
+    c.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); scegli(c.dataset.plan, true); } });
+  });
+  root.querySelectorAll("[data-go]").forEach(a => a.addEventListener("click", () => scegli(a.dataset.go, false)));
+  sel.addEventListener("change", () => scegli(sel.value, false));
+  scegli("studio", false);
+
+  if (CONFIG_IMP.portaleClienti) root.querySelector("#link-portale").href = CONFIG_IMP.portaleClienti;
+
+  function toast(msg) {
+    const t = document.createElement("div"); t.className = "toast"; t.textContent = msg; root.appendChild(t);
+    setTimeout(() => t.remove(), 4200);
+  }
+
+  root.querySelector("#form-acquisto").addEventListener("submit", e => {
+    e.preventDefault();
+    const err = root.querySelector("#f-err"); err.textContent = "";
+    const v = id => root.querySelector(id).value.trim();
+    const piano = sel.value, nome = v("#f-nome"), email = v("#f-email"), studio = v("#f-studio");
+    if (!nome || !studio) { err.textContent = "Inserisci nome e cognome e il nome dello studio."; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = "Controlla l'indirizzo email: sembra incompleto."; return; }
+    if (!root.querySelector("#f-termini").checked) { err.textContent = "Per procedere accetta i Termini di servizio e l'Informativa privacy."; return; }
+
+    if (piano === "oltre") {
+      const corpo = `Richiesta preventivo Il mio Piano\n\nNome: ${nome}\nStudio: ${studio}\nEmail: ${email}\nTelefono: ${v("#f-tel")}\nPazienti/professionisti: ${v("#f-pazienti")}`;
+      location.href = `mailto:${CONFIG_IMP.emailPreventivi}?subject=${encodeURIComponent("Preventivo Il mio Piano — " + studio)}&body=${encodeURIComponent(corpo)}`;
+      return;
+    }
+    if (piano === "prova") {
+      toast("Ti porto alla registrazione nell'app…");
+      setTimeout(() => { location.href = CONFIG_IMP.linkApp + "#registrati&email=" + encodeURIComponent(email); }, 500);
+      return;
+    }
+    const link = CONFIG_IMP.linkStripe[piano];
+    if (!link) { err.textContent = "Il pagamento online non è ancora attivo per questo piano. Scrivici a " + CONFIG_IMP.emailPreventivi + "."; return; }
+    // Stripe precompila l'email e riceve un riferimento (studio) che vedrai nel pagamento.
+    const rif = (studio + "-" + nome).normalize("NFD").replace(/[^A-Za-z0-9_-]+/g, "_").slice(0, 200);
+    const url = new URL(link);
+    url.searchParams.set("prefilled_email", email);
+    url.searchParams.set("client_reference_id", rif);
+    toast("Ti porto alla pagina di pagamento sicura…");
+    setTimeout(() => { location.href = url.toString(); }, 500);
+  });
+})();
+</script>
+<!-- ============ FINE CONTENUTO ============ -->
+</body></html>
