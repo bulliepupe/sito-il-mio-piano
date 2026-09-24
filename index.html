@@ -171,7 +171,7 @@
 #imp label.f span.o{font-weight:400;color:var(--faint)}
 #imp input[type=text],#imp input[type=email],#imp input[type=tel],#imp select,#imp textarea{font:400 1rem var(--body);color:var(--ink);background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;width:100%}
 #imp input:focus,#imp select:focus,#imp textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px rgba(47,81,66,.14)}
-#imp .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#imp .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:end}
 #imp .chk{display:flex;gap:10px;font-size:.88rem;color:var(--soft);align-items:flex-start}
 #imp .chk input{margin-top:4px;width:18px;height:18px;accent-color:var(--accent);flex:none}
 #imp .err{color:#9B3048;font-size:.9rem;min-height:1.3em}
@@ -668,7 +668,7 @@
 
 <section class="pricing" id="prezzi"><div class="wrap">
   <h2>Prezzi chiari, per studio</h2>
-  <p class="intro">Paga lo studio, non il paziente: per lui l'app è inclusa nel tuo percorso. Abbonamento mensile, disdici quando vuoi. Prezzi IVA esclusa.</p>
+  <p class="intro">Paga lo studio, non il paziente: per lui l'app è inclusa nel tuo percorso. Abbonamento mensile, disdici quando vuoi. Prezzi IVA inclusa.</p>
   <div class="plans" id="plans"><div class="plan" data-plan="prova" tabindex="0" role="button" aria-pressed="false">
       <h3>Prova</h3><div class="pz">fino a 3 pazienti</div>
       <div class="eur">0 € <small>per 30 giorni</small></div><ul><li>Tutte le funzioni</li><li>Nessuna carta richiesta</li><li>Poi scegli se abbonarti</li></ul>
@@ -688,9 +688,9 @@
       <h2>Attiva la tua licenza</h2>
       <p style="color:var(--soft)">Compila i dati dello studio e procedi al pagamento sicuro. Riceverai via email la ricevuta e le istruzioni per iniziare.</p>
       <ol class="steps">
-        <li>Scegli il piano e inserisci i dati dello studio.</li>
-        <li>Paga con carta, Apple Pay o Google Pay sulla pagina sicura di Stripe. Per la prova gratuita non serve la carta.</li>
-        <li>Entra nell'app e registrati come professionista <strong>con la stessa email</strong>: l'abbonamento si attiva da solo. Se sei già registrato, si aggiorna in pochi secondi.</li>
+        <li><span>Scegli il piano e inserisci i dati dello studio.</span></li>
+        <li><span>Paga con carta, Apple Pay o Google Pay sulla pagina sicura di Stripe. Per la prova gratuita non serve la carta.</span></li>
+        <li><span>Entra nell'app e registrati come professionista <strong>con la stessa email</strong>: l'abbonamento si attiva da solo. Se sei già registrato, si aggiorna in pochi secondi.</span></li>
       </ol>
     </div>
     <form id="form-acquisto" novalidate>
@@ -703,7 +703,7 @@
         </select></label>
       <div class="row2">
         <label class="f">Nome e cognome<input type="text" id="f-nome" autocomplete="name" required></label>
-        <label class="f"><span>Email <span class="o">(la stessa per accedere all'app)</span></span><input type="email" id="f-email" autocomplete="email" required></label>
+        <label class="f"><span>Email <span class="o">(la stessa dell'app)</span></span><input type="email" id="f-email" autocomplete="email" required></label>
       </div>
       <div class="row2">
         <label class="f">Studio o ragione sociale<input type="text" id="f-studio" autocomplete="organization" required></label>
