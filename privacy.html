@@ -27,7 +27,7 @@ footer a{color:var(--accent);margin-right:16px}
 a{color:var(--accent)}
 </style></head><body>
 <header><div class="w"><a class="brand" href="index.html"><span class="mark">P</span>Il mio Piano</a><a href="index.html">Torna al sito</a></div></header>
-<main><div class="w"><h1>Informativa privacy e cookie</h1><p class="meta">Ultimo aggiornamento: 24 settembre 2026</p>
+<main><div class="w"><h1>Informativa privacy e cookie</h1><p class="meta">Ultimo aggiornamento: 25 settembre 2026</p>
 <p>Questa informativa spiega come trattiamo i dati personali di chi visita il sito, dei professionisti che si abbonano a Il mio Piano e, per quanto ci compete, dei pazienti che usano l'app. È resa ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR).</p>
 
 <h2>1. Chi siamo</h2>
@@ -42,7 +42,7 @@ a{color:var(--accent)}
 <tr><td>Visitatori del sito</td><td>Dati tecnici di navigazione (indirizzo IP, browser, pagine richieste)</td><td>Far funzionare e proteggere il sito</td><td>Legittimo interesse (art. 6.1.f)</td></tr>
 <tr><td>Chi compila il modulo di acquisto o chiede un preventivo</td><td>Nome, email, studio, telefono, numero di pazienti</td><td>Rispondere alla richiesta e attivare il servizio</td><td>Misure precontrattuali e contratto (art. 6.1.b)</td></tr>
 <tr><td>Professionisti abbonati</td><td>Nome, email, password (conservata in forma cifrata dal fornitore di autenticazione), dati di contatto dello studio, stato dell'abbonamento, dati di fatturazione</td><td>Fornire il servizio, gestire abbonamento e fatture, assistenza</td><td>Contratto (art. 6.1.b); obblighi fiscali (art. 6.1.c)</td></tr>
-<tr><td>Pazienti</td><td>Email e nome, piano nutrizionale, obiettivo, target calorico, spunte dei pasti, orari e preferenze dei promemoria, identificativo del dispositivo per le notifiche</td><td>Mostrare il piano, inviare i promemoria</td><td>Istruzioni del professionista titolare (art. 28); la base giuridica è quella individuata dal professionista</td></tr>
+<tr><td>Pazienti</td><td>Email e nome, piano nutrizionale, obiettivo, target calorico, spunte dei pasti, lista della spesa, data e ora dell'ultima apertura dell'app, orari e preferenze dei promemoria, identificativo del dispositivo per le notifiche, data del prossimo controllo indicata dal professionista</td><td>Mostrare il piano, inviare i promemoria, generare la lista della spesa, permettere al professionista di seguire l'andamento del percorso (pasti segnati, ultima attività, promemoria attivi)</td><td>Istruzioni del professionista titolare (art. 28); la base giuridica è quella individuata dal professionista</td></tr>
 </table></div>
 <p>I dati di pagamento con carta sono raccolti direttamente da Stripe: noi non vediamo né conserviamo il numero della carta.</p>
 
@@ -50,7 +50,7 @@ a{color:var(--accent)}
 <p>Non vendiamo né cediamo dati a terzi e non li usiamo per pubblicità. Ci avvaliamo di questi fornitori, nominati responsabili o sub-responsabili del trattamento:</p>
 <div class="tw"><table>
 <tr><th>Fornitore</th><th>Servizio</th><th>Dati trattati</th><th>Garanzie per trasferimenti extra UE</th></tr>
-<tr><td>Google Ireland Ltd / Google Cloud EMEA Ltd (Firebase)</td><td>Accesso con email e password, database, funzioni server, invio notifiche</td><td>Account di professionisti e pazienti, piani nutrizionali, spunte, preferenze promemoria, identificativi dei dispositivi per le notifiche</td><td>Server del database nell'Unione Europea (multi-regione eur3: Belgio e Paesi Bassi); per eventuali accessi dagli Stati Uniti, Data Privacy Framework UE-USA e Clausole contrattuali standard</td></tr>
+<tr><td>Google Ireland Ltd / Google Cloud EMEA Ltd (Firebase)</td><td>Accesso con email e password, database, funzioni server, invio notifiche</td><td>Account di professionisti e pazienti, piani nutrizionali, spunte dei pasti, liste della spesa, data dell'ultimo accesso all'app, preferenze promemoria, identificativi dei dispositivi per le notifiche</td><td>Server del database nell'Unione Europea (multi-regione eur3: Belgio e Paesi Bassi); per eventuali accessi dagli Stati Uniti, Data Privacy Framework UE-USA e Clausole contrattuali standard</td></tr>
 <tr><td>Stripe Payments Europe Ltd</td><td>Pagamenti e abbonamenti</td><td>Dati di pagamento e fatturazione dei professionisti (non dei pazienti)</td><td>Data Privacy Framework e Clausole contrattuali standard</td></tr>
 <tr><td>GitHub Inc. (GitHub Pages)</td><td>Pubblicazione del sito e dei file dell'app</td><td>Dati tecnici di navigazione (indirizzo IP) nei log del server</td><td>Data Privacy Framework e Clausole contrattuali standard</td></tr>
 <tr><td>Google (Google Fonts)</td><td>Caratteri tipografici del sito e dell'app</td><td>Indirizzo IP del browser al caricamento dei caratteri</td><td>Data Privacy Framework</td></tr>
@@ -60,20 +60,20 @@ a{color:var(--accent)}
 <h2>5. Per quanto tempo</h2>
 <ul>
 <li>Account del professionista e dati dei pazienti: per tutta la durata dell'abbonamento; dopo la cessazione restano consultabili per 90 giorni, poi vengono cancellati, salvo diversa istruzione del professionista.</li>
-<li>Un paziente eliminato dal professionista viene cancellato subito e definitivamente (account, piano, spunte, promemoria).</li>
+<li>Un paziente eliminato dal professionista viene cancellato subito e definitivamente (account, piano, spunte, liste della spesa, promemoria).</li>
 <li>Dati di fatturazione: 10 anni, come previsto dalla normativa fiscale.</li>
 <li>Richieste dal modulo senza acquisto: 12 mesi.</li>
 <li>Log tecnici: secondo i tempi dei fornitori, di norma non oltre 90 giorni.</li>
 </ul>
 
 <h2>6. Sicurezza</h2>
-<p>I dati viaggiano cifrati (HTTPS) e sono conservati cifrati dai server del fornitore. L'accesso richiede email e password personali; regole di sicurezza lato server fanno sì che ogni paziente veda solo il proprio piano e ogni professionista solo i propri pazienti. Il paziente non può modificare il piano.</p>
+<p>I dati viaggiano cifrati (HTTPS) e sono conservati cifrati dai server del fornitore. L'accesso richiede email e password personali; regole di sicurezza lato server fanno sì che ogni paziente veda solo il proprio piano e ogni professionista solo i propri pazienti. Il paziente non può modificare il piano. Il professionista può consultare, senza poterli modificare, i pasti segnati dai propri pazienti, la data della loro ultima apertura dell'app e se hanno attivato i promemoria, e vede le statistiche di andamento calcolate da questi dati; non vede la lista della spesa, che resta visibile solo al paziente. Le statistiche servono al professionista per offrire supporto: l'app non prende decisioni automatiche sui pazienti.</p>
 
 <h2>7. I tuoi diritti</h2>
 <p>Puoi chiedere l'accesso ai tuoi dati, la rettifica, la cancellazione, la limitazione, la portabilità e opporti al trattamento basato sul legittimo interesse (artt. 15–22 GDPR), scrivendo a <a href="mailto:info@ilmiopiano.it">info@ilmiopiano.it</a>. Rispondiamo entro 30 giorni. Hai anche diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" rel="noopener">www.garanteprivacy.it</a>).</p>
 
 <h2>8. Cookie e memoria del dispositivo</h2>
-<p>Il sito <strong>non usa cookie di profilazione né strumenti di statistica</strong>. L'app salva sul dispositivo solo le informazioni tecniche indispensabili per funzionare: la sessione di accesso, il tema chiaro o scuro, gli orari dei promemoria e una copia temporanea del piano per l'uso senza connessione. Sono strumenti tecnici, per i quali non serve il consenso. La pagina di pagamento è gestita da Stripe sul proprio dominio, con i propri cookie tecnici e antifrode, descritti nell'informativa di Stripe.</p>
+<p>Il sito <strong>non usa cookie di profilazione né strumenti di statistica</strong>. L'app salva sul dispositivo solo le informazioni tecniche indispensabili per funzionare: la sessione di accesso, il tema chiaro o scuro, gli orari dei promemoria, l'aspetto scelto per la lista della spesa, l'ora dell'ultimo aggiornamento della data di accesso e una copia temporanea del piano per l'uso senza connessione. Sono strumenti tecnici, per i quali non serve il consenso. La pagina di pagamento è gestita da Stripe sul proprio dominio, con i propri cookie tecnici e antifrode, descritti nell'informativa di Stripe.</p>
 
 <h2>9. Minori</h2>
 <p>Il servizio è acquistato da professionisti. Se un paziente è minorenne, il professionista cura l'informativa e raccoglie il consenso di chi esercita la responsabilità genitoriale.</p>
