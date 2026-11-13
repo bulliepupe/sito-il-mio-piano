@@ -51,6 +51,11 @@ section{padding:80px 0}
 .nav nav a{text-decoration:none;color:var(--soft)}
 .nav nav a[aria-current="page"]{color:var(--accent);font-weight:600}
 .nav .btn{padding:10px 16px;font-size:.92rem}
+.nav nav a.btn{color:var(--accent-ink)}
+.nav nav a,.brand b{white-space:nowrap}
+.nav .corto{display:none}
+@media(max-width:560px){.nav .lungo{display:none}.nav .corto{display:inline}.nav nav{gap:12px;font-size:.86rem}.nav .btn{padding:8px 12px}.brand b{font-size:1.1rem}}
+@media(max-width:420px){.brand b{display:none}}
 @media(max-width:720px){.nav nav a.extra{display:none}.nav nav{gap:14px;font-size:.88rem}}
 .vista{display:none}.vista.attiva{display:block}
 .hero{padding:60px 0 40px}
@@ -151,7 +156,7 @@ footer a{text-decoration:none}
     <a class="brand" href="#home"><img class="mark" src="logo.png" alt="" width="36" height="36"><b>Il mio Piano</b></a>
     <nav aria-label="Principale">
       <a href="#pazienti" data-v="pazienti">Per te</a>
-      <a href="professionisti.html">Per i professionisti</a>
+      <a href="professionisti.html"><span class="lungo">Per i professionisti</span><span class="corto">Professionisti</span></a>
       <a class="btn" href="https://app.ilmiopiano.it">Accedi</a>
     </nav>
   </div>
